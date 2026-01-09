@@ -1,18 +1,10 @@
-//def call(String SonarQubeAPI, String Projectname, String ProjectKey){
- // withSonarQubeEnv("${SonarQubeAPI}"){
-//      sh "$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=${Projectname} -Dsonar.projectKey=${ProjectKey} -Dsonar.java.binaries=. -X"
-//  }
-//}
-
-
-
-def call() {
-    withSonarQubeEnv('sonar-server') {
-        sh '''
-        sonar-scanner \
-          -Dsonar.projectKey=wanderlust \
-          -Dsonar.sources=.
-        '''
-    }
+def call(String SonarQubeAPI, String Projectname, String ProjectKey){
+  withSonarQubeEnv("${SonarQubeAPI}"){
+     sh "$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=${Projectname} -Dsonar.projectKey=${ProjectKey} -Dsonar.java.binaries=. -X"
+ }
 }
+
+
+
+
 
